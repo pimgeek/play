@@ -1,0 +1,177 @@
+/*@+leo-ver=5-thin*/
+/*@+node:pimgeek.20160713210211.1: * @file gosol.css*/
+#outer-top {
+  height: 3%;
+  width: 90%;
+  margin: 0 auto;
+  border: 0px solid red;
+  border-radius: 15px;
+}
+
+#outer-bottom {
+  height: 3%;
+  width: 90%;
+  margin: 0 auto;
+  border: 0px solid red;
+  border-radius: 15px;
+}
+
+#outer-main {
+  height: 90%;
+  width: 90%;
+  background-color: #ffcc66;
+  border: 0px solid red;
+  border-radius: 15px;
+  margin: 0 auto;
+}
+
+#inner-top {
+  height: 3%;
+  width: 90%;
+  margin: 0 auto;
+  border: 0px solid blue;
+  border-radius: 15px;
+}
+
+#inner-bottom {
+  height: 3%;
+  width: 90%;
+  margin: 0 auto;
+  border: 0px solid blue;
+  border-radius: 15px;
+}
+
+#inner-top-nav {
+  height: 13%;
+  width: 90%;
+  margin: 0 auto;
+  border: 0px solid blue;
+}
+
+#inner-bottom-nav {
+  height: 13%;
+  width: 90%;
+  margin: 0 auto;
+  border: 0px solid blue;
+}
+
+#embedded-left-nav {
+  float: left;
+  height: 90%;
+  width: 20%;
+  margin: 10px;
+  border: 0px solid green;
+}
+
+#embedded-right-nav {
+  float: right;
+  height: 90%;
+  width: 20%;
+  margin: 10px;
+  border: 0px solid green;
+}
+
+#inner-main {
+  height: 60%;
+  width: 90%;
+  border: 0px solid blue;
+  border-radius: 15px;
+  margin: 0 auto;
+}
+
+.spacer {
+  clear: both;
+  height: 5px;
+}
+
+.left-linker {
+  width: 20%;
+  height: 75%;
+  float: left;
+  border-radius: 8px;
+  line-height: 130%;
+  text-align: center;
+  margin: 0.8%;
+  background-color: lightyellow;
+}
+
+.right-linker {
+  width: 20%;
+  height: 75%;
+  float: right;
+  border-radius: 8px;
+  line-height: 130%;
+  text-align: center;
+  margin: 0.8%;
+  background-color: lightyellow;
+}
+
+.focused-linker {
+  position: relative;
+  top: 20%;
+  left: 1%;
+  width: 50%;
+  height: 56%;
+  float: left;
+  border-radius: 8px;
+  font-size: 240%;
+  text-align: center;
+  margin: 0 auto;
+  background-color: #ddffdd;
+}
+
+.tag-linker {
+  width: 20%;
+  height: 30%;
+  float: left;
+  border-radius: 5px;
+  font-size: 150%;
+  text-align: center;
+  margin: 2%;
+  background-color: #ccffcc;
+}
+
+.plan-linker {
+  width: 95%;
+  height: 30%;
+  float: left;
+  border-radius: 10px;
+  font-size: 250%;
+  text-align: center;
+  margin: 5px;
+  background-color: #ccccff;
+}
+
+* a {
+  text-decoration: none;
+}
+
+.popup {
+  border: solid 1px #eeccee;
+  border-radius: 8px;
+  font-family: Tahoma;
+  font-size: 12px;
+  display: none;
+  position: absolute;
+  width: 300px;
+  z-index: 60;
+}
+
+.popupbody {
+  border: solid 1px #eeccee;
+  border-radius: 8px;
+  background: #eeccee;
+  padding: 5px;
+  text-align: left;
+}
+
+.popuptitle {
+  border-radius: 8px;
+  background: #eeaaee;
+  text-align: left;
+  color: white;
+  font-weight: bold;
+  height: 15px;
+  padding: 5px;
+}
+/*@-leo*/

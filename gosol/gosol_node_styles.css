@@ -1,0 +1,244 @@
+/*@+leo-ver=5-thin*/
+/*@+node:pimgeek.20160723072634.1: * @file gosol_node_styles.css*/
+a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+a:hover {
+  font-weight: bold;
+}
+
+p {
+  line-height: 168%;
+}
+
+label {
+  font-size: 14px;
+  min-height: 24px;
+  display: block;
+  margin: 0 auto;
+}
+
+img {
+  width: 98%;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.05);
+  margin-top: 15px;
+}
+
+blockquote {
+  background-color: lightgoldenrodyellow;
+  padding: 5px;
+  border-radius: 10px;
+  font-size: 85%;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.spacer {
+  height: 6px;
+  width: 100px;
+  clear: both;
+}
+
+.outer_frame {
+  position: relative;
+  padding: 2px;
+  background-color: #ffcc66;
+  border: 0px solid red;
+  border-radius: 7px;
+  margin: 0 auto;
+}
+
+.outer_title_box {
+  width: 70%;
+  height: 24px;
+  float: left;
+  border-radius: 6px;
+  text-align: center;
+  padding: 6px 0 0 0;
+  margin: 3px 3px 0 3px;
+  background-color: #cc6611;
+}
+
+label.outer_title {}
+
+.inner_frame {
+  padding: 5px;
+  background-color: #ffdd99;
+  border: 0px solid blue;
+  border-radius: 7px;
+  margin: 0 3px 3px 3px;
+}
+
+.inner_frame a {
+  color: #111111;
+}
+
+.inner_frame a:hover {
+  color: black;
+  font-weight: bold;
+}
+
+.inner_frame a:visited {
+  color: dimgray;
+}
+
+.node_body a {
+  color: #1111ff;
+}
+
+.node_body a:hover {
+  font-weight: bold;
+}
+
+.node_body a:visited {
+  color: dimgray;
+}
+
+.inner_title_box {
+  width: 80%;
+  height: 24px;
+  float: left;
+  border-radius: 6px;
+  text-align: center;
+  padding: 6px 0 0 0;
+  background-color: #ff9933;
+}
+
+label.inner_title {
+  color: black;
+  font-weight: bold;
+}
+
+.prev_title_box {
+  width: 85%;
+  height: 24px;
+  float: left;
+  border-radius: 6px;
+  text-align: center;
+  padding: 6px 0 0 0;
+  background-color: #ffffcc;
+}
+
+label.prev_title {}
+
+.next_title_box {
+  width: 85%;
+  height: 24px;
+  float: right;
+  border-radius: 6px;
+  text-align: center;
+  padding: 6px 0 0 0;
+  background-color: #ffffcc;
+}
+
+label.next_title {}
+
+.node_body {
+  background-color: #ffeeaa;
+  border: 0px solid blue;
+  border-radius: 7px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+#context_help_box {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  border: 5px solid lightblue;
+  border-radius: 10px;
+  background-color: #ffffdd;
+  margin: 0 auto;
+  z-index: -99;
+  text-align: left;
+  opacity: 0;
+  transition: all 1s ease;
+}
+
+#context_help_btn {
+  width: 25px;
+  height: 25px;
+  float: right;
+  background-color: #5577ee;
+  border: 5px solid lightblue;
+  border-radius: 20px;
+  font-weight: bolder;
+  color: white;
+  font-size: 22px;
+  text-align: center;
+  line-height: 120%;
+}
+
+#context_graph_box {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  border: 5px solid lightgreen;
+  border-radius: 10px;
+  background-color: #ffffdd;
+  margin: 0 auto;
+  z-index: -99;
+  overflow: scroll;
+  text-align: left;
+  opacity: 0;
+  transition: all 1s ease;
+}
+
+#context_graph_btn {
+  width: 25px;
+  height: 25px;
+  float: right;
+  background-color: #55ee77;
+  border: 5px solid lightgreen;
+  border-radius: 20px;
+  font-weight: bolder;
+  color: white;
+  font-size: 22px;
+  text-align: center;
+  line-height: 120%;
+}
+
+#context_graph_close_btn {
+  width: 20px;
+  height: 20px;
+  float: right;
+  background-color: dimgray;
+  border: 5px solid lightgray;
+  border-radius: 18px;
+  font-weight: bolder;
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  line-height: 100%;
+}
+
+label.node_title {
+  font-size: 24px;
+  font-weight: bold;
+  padding: 5px 0 5px 0;
+}
+
+.node_last_chg_dt {
+  font-size: 12px;
+  padding: 5px 0 5px 0;
+}
+
+.sub_nodes_title {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 0 0 0;
+}
+
+.ds-thread {
+  padding: 5px;
+  background-color: white;
+  border-radius: 6px;
+  margin: 0 0 54% 0;
+}
+/*@-leo*/

@@ -1,0 +1,145 @@
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>钩索图 - 利用免费的 yEd 编辑器制作</title>
+  <style type="text/css">
+  body {
+    text-align: center;
+  }
+  table, .container {
+    text-align: left;
+    margin: 0 auto;
+  }
+  .tooltip {
+    font-family: simhei;
+    font-size: 11pt;
+    min-width: 240px;
+    max-width: 320px;
+    min-height: 60px;
+    word-wrap: break-word;
+    background-color: #FFFFCC;
+    border: 1px solid black;
+    padding: 2px;
+    overflow-x: hidden;
+  }
+  </style>
+<style type="text/css">
+.tooltip {
+  position:absolute;
+  display:none
+}
+</style>
+</head>
+
+<body>
+  <div class="container">
+    
+<script type="text/javascript">
+tooltip = null;
+document.onmousemove = updateTooltip;
+function updateTooltip(e) {
+try {
+if (document.all) {
+if (document.documentElement && document.documentElement.scrollTop) { // Explorer 6 Strict
+x = document.documentElement.scrollLeft + window.event.x;
+y = document.documentElement.scrollTop + window.event.y;
+}
+else { // all other Explorers
+x = document.body.scrollLeft + window.event.x;
+y = document.body.scrollTop + window.event.y;
+}
+}
+else {
+x = e.pageX;
+y = e.pageY;
+}
+if (tooltip != null) {
+o = 20;
+var sx, sy;
+if (self.pageYOffset) { // all except Explorer
+sx = self.pageXOffset;
+sy = self.pageYOffset;
+}
+else if (document.documentElement && document.documentElement.scrollTop) { // Explorer 6 Strict
+sx = document.documentElement.scrollLeft;
+sy = document.documentElement.scrollTop;
+}
+else if (document.body) { // all other Explorers
+sx = document.body.scrollLeft;
+sy = document.body.scrollTop;
+}
+t = y + o + tooltip.offsetHeight;
+w = sy + document.body.clientHeight;
+if (t > w) {
+y = y - o - tooltip.offsetHeight;
+}
+else {
+y = y + o;
+}
+t = x + o + tooltip.offsetWidth;
+w = sx + document.body.clientWidth;
+if (t > w) {
+x = x - o - tooltip.offsetWidth;
+}
+else {
+x = x + o;
+}
+if ((tooltip.style.top == '' || tooltip.style.top == 0) && (tooltip.style.left == '' || tooltip.style.left == 0))
+{
+tooltip.style.width = tooltip.offsetWidth + 'px';
+tooltip.style.height = tooltip.offsetHeight + 'px';
+}
+tooltip.style.left = x + "px";
+tooltip.style.top = y + "px";
+}
+} catch (error) { error = null; }
+}
+function showTooltip(id) {
+try {
+tooltip = document.getElementById(id);
+tooltip.style.display = "block";
+} catch (error) { error = null; }
+}
+function hideTooltip() {
+try {
+tooltip.style.display = "none";
+} catch (error) { error = null; }
+}
+</script>
+
+<div class="tooltip" id="n0">2.listary<br><br>跟everything速度差不多，并且支持快捷启动等。</div>
+<div class="tooltip" id="n1">1.filelocator<br><br>无索引型全文搜索工具，可以设定路径、设定文件时间、格式，可以正则表达式。操作体验非常好。不足之处就在于无索引，所以当文件特别多的时候，还是有点慢。</div>
+<div class="tooltip" id="n2">文件搜索工具介绍 Get√</div>
+<div class="tooltip" id="n3">各种关于搜索的知识工具介绍 Get√</div>
+<div class="tooltip" id="n4">1.everything<br><br>简单、容易上手快到没朋友的搜索，支持空格的模糊搜索，支持正则表达式搜索，可以快捷键呼出，可以为常用搜索设置收藏并设置快捷键。同时支持把本机架设为http或者ftp服务器，供局域网内其他用户（包括移动设备）进行访问、下载。</div>
+<div class="tooltip" id="n5">各种关于搜索的知识工具介绍</div>
+<div class="tooltip" id="n6">全文搜索工具介绍 Get√</div>
+<div class="tooltip" id="n7">全文搜索工具介绍</div>
+<div class="tooltip" id="n8">2.docfetcher<br><br>这款因为是个熊头，被我称为小熊搜索。是一款开源软件，需要jave环境支持。是一款索引型的全文搜索利器，除了office文档、pdf外，还可以搜索epub。当目录结构或者文件名有少量变动时，只须点击 更新索引就好。无须从头开始索引。比起百度硬盘搜索等工具，好在它真的是对全文索引（百度硬盘对于pdf图书只索引前20页）。</div>
+<div class="tooltip" id="n9">文件搜索工具介绍</div>
+
+<map name="image1_1">
+  <area shape="rect" coords="43,106,198,135" alt="" onmouseover="showTooltip('n9')" onmouseout="hideTooltip()"/>
+  <area shape="rect" coords="333,286,433,315" alt="" onmouseover="showTooltip('n8')" onmouseout="hideTooltip()"/>
+  <area shape="rect" coords="306,106,460,135" alt="" onmouseover="showTooltip('n7')" onmouseout="hideTooltip()"/>
+  <area shape="rect" coords="279,376,487,405" alt="" onmouseover="showTooltip('n6')" onmouseout="hideTooltip()"/>
+  <area shape="rect" coords="261,16,505,45" alt="" onmouseover="showTooltip('n5')" onmouseout="hideTooltip()"/>
+  <area shape="rect" coords="70,196,171,225" alt="" onmouseover="showTooltip('n4')" onmouseout="hideTooltip()"/>
+  <area shape="rect" coords="234,486,532,514" alt="" onmouseover="showTooltip('n3')" onmouseout="hideTooltip()"/>
+  <area shape="rect" coords="16,376,225,405" alt="" onmouseover="showTooltip('n2')" onmouseout="hideTooltip()"/>
+  <area shape="rect" coords="328,196,438,225" alt="" onmouseover="showTooltip('n1')" onmouseout="hideTooltip()"/>
+  <area shape="rect" coords="83,286,157,315" alt="" onmouseover="showTooltip('n0')" onmouseout="hideTooltip()"/>
+</map>
+
+
+    <table class="yimagetable" cellspacing="0" cellpadding="0" border="0">
+      <tr>
+        <td><img class="yimage" src="http://pimfans.oss-cn-beijing.aliyuncs.com/pimfans/play/kntools1_1.png" usemap="#image1_1" border="0" alt=""/></td>
+      </tr>
+    </table>
+
+  </div>
+</body>
+
+</html>

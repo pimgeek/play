@@ -1,42 +1,43 @@
-body {
-  margin: 0 0 0 0;
-  background: #F6F1E0;background - size: 100 % 100 % ;background - repeat: no - repeat;background - attachment: fixed;
-  font - family: sans - serif;
-  color: #000000;
+body
+{
+	margin:0 0 0 0;
+	background:#F6F1E0;
+	font-family:sans-serif;
+	color:#000000;
 }
 
 body > div
 {
-  margin-bottom:0px;
+	margin-bottom:0px;
 }
 
 div.sitemap 
 {
-  margin-bottom:100px;
+	margin-bottom:100px;
 }
 
 div.sitemap > div
 {
-  padding:0px 0px 0px 14px;
+	padding:0px 0px 0px 14px;
 }
 
 div.sitemap ul
 {
-  border-radius:12px;
-  padding:3px 15px 3px 26px;
-  margin:3px 15px 3px 0px;
+	border-radius:12px;
+	padding:3px 15px 3px 26px;
+	margin:3px 15px 3px 0px;
   list-style:none;
-  background-color:rgba(220,120,0,0.12);
+	background-color:rgba(220,120,0,0.12);
 }
 
 div.sitemap a
 {
-  display:block;
-  overflow:hidden;
-  font-family:sans-serif;
-  color:black;
-  text-decoration:none;
-  font-size:14px;
+	display:block;
+	overflow:hidden;
+	font-family:sans-serif;
+	color:black;
+	text-decoration:none;
+	font-size:14px;
   padding:10px 0px 10px 8px;
   margin:10px 10px 10px -10px;
   border-left:5px solid rgba(220,120,0,0.12);
@@ -46,27 +47,27 @@ div.sitemap a
 div.crossreferences > div > div,
 div.attachments > div > div
 {
-  margin:10pt;
-  font-weight:bold;
-  border-bottom:1px dotted # 000000;
+	margin:10pt;
+	font-weight:bold;
+	border-bottom:1px dotted #000000;
 }
 
 div.crossreferences li a,
-  div.attachments li a {
-    font - family: sans - serif;
-    font - size: 16 px;
-    color: #000000;
-  text-decoration:underline;
+div.attachments li a
+{
+	font-family:sans-serif;
+	font-size:16px;
+	color:#000000;
+	text-decoration:underline;
 }
-
 
 div.textcontent div,
 div.url div,
 div.stream div,
 div.graphic div
 {
-  padding:15px;
-  font-size:20px;
+	padding:15px;
+	font-size:20px;
 }
 
 div.textcontent,
@@ -74,169 +75,178 @@ div.url,
 div.stream,
 div.graphic
 {
-  width:100%;
+	width:100%;
 }
-
 
 div.textcontent a,
 div.url a
 {
-  font-family:sans-serif;
-  font-size:16px;
-  color:# 000000;
-    text - decoration: underline;
-  }
-
-div.taskdate {
-  margin: 10 pt;
-  font - family: sans - serif;
-  font - size: 14 px;
+	font-family:sans-serif;
+	font-size:16px;
+	color:#000000;
+	text-decoration:underline;
 }
 
-div.navigation {
-  margin: 10 pt;
+div.taskdate
+{
+	margin:10pt;
+	font-family:sans-serif;
+	font-size:14px;
 }
 
-div.navigation div a {
-  display: block;
-  border: 1 px solid #333333;
-  border-radius:5px;
-
-  padding:15px;
-  margin-bottom:10px;
-
-  font-family:sans-serif;
-  font-size:14px;
-  text-decoration:none;
-  color:# 000000;
-  background - color: #eeeeee;
-  font - weight: bold;
+div.navigation
+{
+	margin:10pt;
 }
 
-
-div.path {
-  margin: 15 px;
+div.navigation div a
+{
+	display:block;
+	border:1px solid #333333;
+	border-radius:5px;
+	padding:15px;
+	margin-bottom:10px;
+	font-family:sans-serif;
+	font-size:14px;
+	text-decoration:none;
+	color:#000000;
+	background-color:#eeeeee;
+	font-weight:bold;
 }
 
-div.path div a {
-  display: block;
-  clear: both;
-
-  padding: 3 pt;
-  margin - bottom: 10 px;
-
-  background: #444;
-
-  background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(# 777), to(#222));
-  background:-moz-linear-gradient(top, # 777, #222);
-  background:-o-linear-gradient(top, # 777, #222);
-  filter:progid:DXImageTransform.Microsoft.gradient(GradientType= 0, startColorstr = '#777', endColorstr = '#222');
-background: -ms - linear - gradient(top, #777, # 222);
-background: linear - gradient(top, #777, # 222);
-
-
-border - right: 1 px solid #222;
-  border-left:1px solid # 777;
-border - radius: 3 px 3 px 3 px 3 px; - webkit - border - radius: 3 px 3 px 3 px 3 px;
-border: none;
-
-font - family: sans - serif;
-font - size: 14 px;
-text - decoration: none;
-color: white;
+div.path
+{
+	margin:15px;
 }
 
-div.path div a: NTH - CHILD(2) {
-  margin - left: 35.8 % ;
+div.path div a
+{
+	display:block;
+	clear:both;
+	padding:3pt;
+	margin-bottom:10px;
+	
+	background:#444;
+	background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#777), to(#222));
+	background:-moz-linear-gradient(top, #777, #222);
+	background:-o-linear-gradient(top, #777, #222);
+	filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#777', endColorstr='#222');
+	background:-ms-linear-gradient(top, #777, #222);
+	background:linear-gradient(top, #777, #222);
+
+	border-right:1px solid #222;
+	border-left:1px solid #777;
+	border-radius:3px 3px 3px 3px;
+	-webkit-border-radius:3px 3px 3px 3px;
+	border:none;
+	
+	font-family:sans-serif;
+	font-size:14px;
+	text-decoration:none;
+	color:white;
 }
 
-div.path div a: LAST - CHILD {
-  background: #888;
-  -webkit-border-radius:3px 3px 3px 3px;
-  border-radius:3px 3px 3px 3px;
-  margin-left:20px;
-  padding-right:5pt;
+div.path div a:NTH-CHILD(2)
+{	
+	margin-left:35.8%;
+}
+
+div.path div a:LAST-CHILD
+{	
+	background:#888;
+	-webkit-border-radius:3px 3px 3px 3px;
+	border-radius:3px 3px 3px 3px;
+	margin-left:20px;
+	padding-right:5pt;
 }
 
 div.path div a:NTH-LAST-CHILD(2)
-{  
-  background:# 666; - webkit - border - radius: 3 px 3 px 3 px 3 px;
-  border - radius: 3 px 3 px 3 px 3 px;
-  margin - left: 10 px;
-  padding - right: 5 pt;
+{	
+	background:#666;
+	-webkit-border-radius:3px 3px 3px 3px;
+	border-radius:3px 3px 3px 3px;
+	margin-left:10px;
+	padding-right:5pt;
 }
 
-div.path div a.sitemap {
-  float: none;
-  background: orange!important;
-  margin - left: 30 % ;
-  margin - right: 30 % ; - webkit - border - radius: 0 px;
-  border - radius: 4 px;
+div.path div a.sitemap
+{
+	float:none;
+	background:orange !important;
+	margin-left:30%;
+	margin-right:30%;
+	-webkit-border-radius:0px;
+	border-radius:4px;
 }
 
-div.path a.parent img {
-  height: 11.3 pt;
+div.path a.parent img
+{
+	height:11.3pt;
 }
 
-div.path a.parent {
-  border: none;
-  margin - right: 10 pt;
-  float: left;
-  clear: none!important;
-  width: 20 px;
-  height: 20 px;
+div.path a.parent
+{
+	border:none;
+	margin-right:10pt;
+	float:left;
+	clear:none !important;
+	width:20px;
+	height:20px;
 }
 
-div.title div.name {
-  background: #798fd7;
-  color:white;
-  font-size:18px;
-  font-weight:bold;
-  letter-spacing:2px;
-  padding:15px;
+div.title div.name
+{
+	background:#798fd7;
+	color:white;
+	font-size:18px;
+	font-weight:bold;
+	letter-spacing:2px;
+	padding:15px;
 }
 
 div.title
 {
-  width:100%;
-  margin-bottom:10pt;
-  clear:both;
+	width:100%;
+	margin-bottom:10pt;
+	clear:both;
 }
 
 div.title div.description
 {
-  font-size:16pt;
-  font-style:italic;
-  border-bottom:1px solid # 798 fd7;
-  padding: 10 pt;
+	font-size:16pt;
+	font-style:italic;
+	border-bottom:1px solid #798fd7;
+	padding:10pt;
 }
 
-div.maintitle {
-  position: fixed;
-  bottom: 0 px;
-  background: #798fd7;
-  width:100%;
-  font-size:16px;
-  border-top:1px solid # 999;
+div.maintitle
+{
+	position:fixed;
+	bottom:0px;
+	background:#798fd7;
+	width:100%;
+	font-size:16px;
+	border-top:1px solid #999;
 }
 
-
-div.maintitle > div {
-  padding: 5 pt;
+div.maintitle > div
+{
+	padding:5pt;
 }
 
-
-div.maintitle div.author {
-  clear: both!important;
-  float: right!important;
+div.maintitle div.author
+{
+	clear:both !important;
+	float:right !important;
 }
 
-div.maintitle div.lastmodified {
-  float: right;
-  padding - right: 10 pt;
+div.maintitle div.lastmodified
+{
+	float:right;
+	padding-right:10pt;
 }
 
-div.maintitle div.name {
-  // float:left !important;
-  clear: both!important;
+div.maintitle div.name
+{
+	clear:both !important;
 }

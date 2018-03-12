@@ -7,6 +7,7 @@ body {
 
 body > div {
   display:table;
+  width:99%;
   margin-bottom:0px;
 }
 

@@ -19,7 +19,7 @@ div.sitemap ul
 div.sitemap a
 {
 	font-family:sans-serif;
-	color:#000000;
+	color:black;
 	text-decoration:underline;
 	font-size:14px;
 }
@@ -106,8 +106,8 @@ div.path
 
 div.path div a
 {
-	display:inline-block;
-	float:left;
+	display:block;
+  clear:both;
 	
 	padding:3pt;
 	margin-bottom:10px;
@@ -124,25 +124,47 @@ div.path div a
 
 	border-right:1px solid #222;
 	border-left:1px solid #777;
-	
+  border-radius:3px 3px 3px 3px;
+	-webkit-border-radius:3px 3px 3px 3px;
+  border:none;
+  
 	font-family:sans-serif;
   font-size:14px;
 	text-decoration:none;
 	color:white;
 }
 
+div.path div a:NTH-CHILD(2)
+{	
+  margin-left:35.8%;
+}
+
 div.path div a:LAST-CHILD
 {	
-	-webkit-border-radius:0px 12px 12px 0px;
-	border-radius:0px 12px 12px 0px;
+	background:#888;
+  -webkit-border-radius:3px 3px 3px 3px;
+	border-radius:3px 3px 3px 3px;
+  margin-left:20px;
+	padding-right:5pt;
+}
+
+div.path div a:NTH-LAST-CHILD(2)
+{	
+	background:#666;
+  -webkit-border-radius:3px 3px 3px 3px;
+	border-radius:3px 3px 3px 3px;
+  margin-left:10px;
 	padding-right:5pt;
 }
 
 div.path div a.sitemap
 {
-	margin-right:10pt;
+	float:none;
+  background:orange !important;
+  margin-left:30%;
+  margin-right:30%;
 	-webkit-border-radius:0px;
-	border-radius:0px;
+	border-radius:4px;
 }
 
 div.path a.parent img
@@ -154,13 +176,19 @@ div.path a.parent
 {
 	border:none;
 	margin-right:10pt;
+  float:left;
+  clear:none !important;
+  width:20px;
+	height:20px;
 }
 
 div.title div.name
 {
 	background:#798fd7;
-	font-size:14px;
-	padding:25px;
+  color:white;
+	font-size:18px;
+  font-weight:bold;
+	padding:15px;
 }
 
 div.title
@@ -198,7 +226,7 @@ div.maintitle > div
 
 div.maintitle div.author
 {
-	float:right;
+	float:none;
 }
 
 div.maintitle div.lastmodified

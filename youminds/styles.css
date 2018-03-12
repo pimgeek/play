@@ -1,6 +1,6 @@
 body
 {
-	margin:0px;
+	margin:0 0 0 0;
 	background:#a1b7ff;background-image: url('bgimage.jpg');background-size:100% 100%;background-repeat:no-repeat;background-attachment: fixed;
 	font-family:sans-serif;
 	color:#000000;
@@ -8,7 +8,7 @@ body
 
 body > div
 {
-	margin-bottom:30pt;
+	margin-bottom:0px;
 }
 
 div.sitemap ul
@@ -214,7 +214,6 @@ div.maintitle
 	width:100%;
 	font-size:16px;
 	border-top:1px solid #999;
-	height:48px;
 }
 
 
@@ -226,7 +225,8 @@ div.maintitle > div
 
 div.maintitle div.author
 {
-	float:none;
+	clear:both !important;
+  float:right !important;
 }
 
 div.maintitle div.lastmodified
@@ -237,5 +237,6 @@ div.maintitle div.lastmodified
 
 div.maintitle div.name
 {
-	float:left;
+	// float:left !important;
+  clear:both !important;
 }

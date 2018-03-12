@@ -1,3 +1,4 @@
+# 此脚本基于 python 3.6 编写
 import os
 import re
 import glob

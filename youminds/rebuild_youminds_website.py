@@ -1,5 +1,6 @@
 # 此脚本基于 python 3.6 编写
 import os
+import shutil
 import glob
 import re
 
@@ -10,6 +11,24 @@ def add_meta_viewport_as_needed(html):
   else:
     new_html = html.replace('</head>','<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no\">\n</head>')
   return new_html
+  
+def remove_empty_tags_as_needed(html):
+  regex = re.compile('<ul>[ \r\n]*</ul>')
+  if (regex.search(html) == None):
+    new_html = html
+  else:
+    new_html = re.sub(regex, '', html)
+  return new_html
+
+def apply_user_css(path):
+  src_file = os.path.join(".", "styles.css")
+  dest_file = os.path.join(path, "styles.css")
+  if (os.path.isfile(dest_file)):
+    shutil.copyfile(src_file, dest_file)
+    ret_val = 0
+  else:
+    ret_val = -1
+  return ret_val
 
 def load_root_index(path):
   fh = open(path, encoding='utf8')
@@ -31,10 +50,11 @@ def rebuild_youminds_website_index(index_file_path):
     ret_val = -1
   else:
     html = load_root_index(index_file_path)
-    new_html = add_meta_viewport_as_needed(html)
-    rewrite_index_file(index_file_path, new_html)
-    ret_val = 0
-    sub_website_list = []
+    new_html_1 = add_meta_viewport_as_needed(html)
+    new_html_2 = remove_empty_tags_as_needed(new_html_1)
+    rewrite_index_file(index_file_path, new_html_2)
+    # 以上函数调用也应返回错误信息，以后再修改
+    ret_val = apply_user_css(os.path.dirname(index_file_path))
     youminds_website_name = index_file_path[0:-5]
     if (os.path.isdir(youminds_website_name)):
       sub_youminds_websites = glob.glob(os.path.join(youminds_website_name, "*.html"))
@@ -50,5 +70,5 @@ def rebuild_youminds_website_index(index_file_path):
   return ret_val
 
 if __name__ == '__main__':
-  ret_val = rebuild_youminds_website_index("D:/pim-wudi/tmp/youminds/test/头马俱乐部（TOASTMASTERS）.html")
+  ret_val = rebuild_youminds_website_index("D:/pim-wudi/tmp/www/youminds_export/My Idea Pad.html")
   print(ret_val)

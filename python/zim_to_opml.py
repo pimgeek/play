@@ -6,6 +6,7 @@ import glob
 def load_zim_file(path):
   fh = open(path, encoding='utf8')
   lines = list(fh.readlines())
+  fh.close()
   return lines
   
 def get_zim_file_title(title_line):

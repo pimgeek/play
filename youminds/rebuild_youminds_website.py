@@ -20,6 +20,23 @@ def remove_empty_tags_as_needed(html):
     new_html = re.sub(regex, '', html)
   return new_html
 
+def modify_svg_scale_as_needed(html):
+  regex = re.compile('transform=\"scale\(1\.0 1\.0\)\"')
+  if (regex.search(html) == None):
+    new_html = html
+  else:
+    new_html = re.sub(regex, 'transform=\"scale(0.9 0.9)\"', html)
+  return new_html
+  
+def modify_svg_width_as_needed(html):
+  regex = re.compile('(svg style=\"[^\"]+\") width=\"([^"]+)\"')
+  if (regex.search(html) == None):
+    new_html = html
+  else:
+    result = regex.search(html)
+    new_html = re.sub(regex, '%s width=\"\"' % result.group(1), html)
+  return new_html
+
 def apply_user_css(path):
   src_file = os.path.join(".", "styles.css")
   dest_file = os.path.join(path, "styles.css")
@@ -49,10 +66,12 @@ def rebuild_youminds_website_index(index_file_path):
     print(err_msg)
     ret_val = -1
   else:
-    html = load_root_index(index_file_path)
-    new_html_1 = add_meta_viewport_as_needed(html)
-    new_html_2 = remove_empty_tags_as_needed(new_html_1)
-    rewrite_index_file(index_file_path, new_html_2)
+    new_html = load_root_index(index_file_path)
+    new_html = add_meta_viewport_as_needed(new_html)
+    new_html = remove_empty_tags_as_needed(new_html)
+    new_html = modify_svg_scale_as_needed(new_html)
+    new_html = modify_svg_width_as_needed(new_html)
+    rewrite_index_file(index_file_path, new_html)
     # 以上函数调用也应返回错误信息，以后再修改
     ret_val = apply_user_css(os.path.dirname(index_file_path))
     youminds_website_name = index_file_path[0:-5]

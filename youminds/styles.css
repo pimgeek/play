@@ -8,7 +8,7 @@ body {
 body > div {
   display:table;
   width:100%;
-  margin-bottom:0px;
+  margin:0px 0px 0px 0px;
 }
 
 div.sitemap  {
@@ -55,12 +55,19 @@ div.attachments li a {
   text-decoration:underline;
 }
 
+div.textcontent {
+  display:table-header-group;
+}
+
 div.textcontent div,
 div.url div,
 div.stream div,
 div.graphic div {
-  padding:10px;
-  font-size:18px;
+  margin:0px 10px 0px 10px;
+  border-bottom:4px double #798fd7;
+  padding:5px 10px 15px 10px;
+  font-family:monospace;
+  font-size:16px;
   line-height:180%;
   display:block;
   unicode-bidi:embed;
@@ -89,15 +96,17 @@ div.taskdate {
   font-size:14px;
 }
 
-div.navigation,
-div.path {
-  margin:10pt;
-  display:table-footer-group;
+div.navigation {
+  border-spacing: 10px 10px;
+  display:table-footer-group !important;
 }
 
-div.navigation div {
-  margin:15px;
+div.navigation > div {
+  padding:0px 0px 5px 0px;
+  margin:15px 15px 0px 15px;
+  border-bottom:1px dotted silver;  
 }
+
 div.navigation div a {
   display:block;
   border:1px solid #cccccc;
@@ -113,7 +122,11 @@ div.navigation div a {
 }
 
 div.path {
-  margin:15px;
+  display:table-footer-group;
+}
+
+div.path > div {
+  padding:15px 10px 0px 10px;  
 }
 
 div.path div a {
@@ -170,42 +183,43 @@ div.path > div > a.sitemap {
 }
 
 div.path a.parent img {
-  height:11.3pt;
+  height:15px;
 }
 
 div.path a.parent {
   border:none;
-  margin-right:10pt;
+  margin-right:15px;
   float:left;
   clear:none !important;
-  width:20px;
-  height:20px;
+  width:25px;
+  height:25px;
 }
 
 div.title div.name {
   background:#798fd7;
   color:white;
-  font-size:18px;
+  font-size:20px;
   font-weight:bold;
   letter-spacing:2px;
   padding:15px;
 }
 
 div.title {
+  display:table-caption;
   width:100%;
   margin-bottom:10pt;
   clear:both;
 }
 
 div.title div.description {
-  width:100%;
-  border-bottom:1px solid #798fd7;
+  margin:0px 10px 0px 10px;
+  border-bottom:1px dotted #798fd7;
   padding:15px 15px 15px 15px;
   display:block;
   unicode-bidi:embed;
   line-height:150%;
-  font-family:monospace;
-  font-size:16pt;
+  font-family:serif;
+  font-size:18px;
   word-wrap:break-word;       /* Internet Explorer 5.5+ */
   word-break:break-all;
 }

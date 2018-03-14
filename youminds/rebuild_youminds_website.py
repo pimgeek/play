@@ -5,7 +5,7 @@ import glob
 import re
 
 def add_meta_viewport_as_needed(html):
-  regex = re.compile('<meta name=\"viewport>\"')
+  regex = re.compile('<meta name=\"viewport\"')
   if (regex.search(html)):
     new_html = html
   else:
@@ -70,5 +70,5 @@ def rebuild_youminds_website_index(index_file_path):
   return ret_val
 
 if __name__ == '__main__':
-  ret_val = rebuild_youminds_website_index("D:/pim-wudi/tmp/www/youminds_export/My Idea Pad.html")
+  ret_val = rebuild_youminds_website_index("D:/pim-wudi/tmp/www/youminds_export/pub.html")
   print(ret_val)

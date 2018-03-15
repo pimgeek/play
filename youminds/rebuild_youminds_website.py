@@ -55,12 +55,12 @@ def add_navigation_label_as_needed(html):
 
 def add_sitepath_label_as_needed(html):
   regex_no_change = re.compile('<div class=\'path\'>[ \t\r\n]*<div class=\'label\'')
-  regex_sitepath = re.compile('<div class=\'path\'>[ \t\r\n]*<div>')
+  regex_sitepath = re.compile('<div class=\'path\'>[ \t\r\n]*<div>[ \t\r\n]*<a class=\'sitemap\'')
   if (regex_no_change.search(html) != None):
     new_html = html
   else:
     result = regex_sitepath.search(html)
-    new_html = re.sub(regex_sitepath, '<div class=\'path\'>\n<div class=\'label\'>回溯阅读 / 关联阅读</div>\n<div>', html)
+    new_html = re.sub(regex_sitepath, '<div class=\'path\'>\n<div class=\'label\'>回溯阅读 / 关联阅读</div>\n<div>\n<a class=\'sitemap\'', html)
   return new_html
 
 def apply_user_css(path):

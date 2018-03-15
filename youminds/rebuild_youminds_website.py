@@ -1,8 +1,39 @@
 # 此脚本基于 python 3.6 编写
-import os
-import shutil
+import bs4
 import glob
+import html as htm
+import markdown
+import os
 import re
+import shutil
+
+def new_html_soup_tag(html_div_code):
+  temp_soup = bs4.BeautifulSoup(html_div_code, "html5lib")
+  # BeautifulSoup automatically add <html> and <body> tags
+  # There is only one 'div' tag, so it's the only member in the 'contents' list
+  # new_tag = temp_soup.html.body.contents[0]
+  # Or more simply
+  div_tag = temp_soup.html.body.div
+  return div_tag
+
+def conv_desc_to_markdown_as_needed(html):
+  html_soup = bs4.BeautifulSoup(html, "html5lib")
+  desc_tag = html_soup.find("div", "description")
+  md_to_html_tag = html_soup.find("div", "md_to_html", "description")
+  if (md_to_html_tag != None):
+    new_html = html
+  elif (desc_tag != None):
+    regex_inner_html = re.compile("<div class=\"description\">(.+(?=<\/div>))<\/div>", re.DOTALL)
+    result = regex_inner_html.search(desc_tag.prettify())
+    if (result != None):
+      new_desc_tag = new_html_soup_tag("<div id=\"md_to_html\" class=\"description\">%s</div>" % htm.unescape(markdown.markdown(result.group(1))))
+      desc_tag.replace_with(new_desc_tag)
+      new_html = html_soup.prettify()
+    else:
+      new_html = html
+  else:
+    new_html = html
+  return new_html
 
 def add_meta_viewport_as_needed(html):
   regex = re.compile('<meta name=\"viewport\"')
@@ -95,6 +126,7 @@ def rebuild_youminds_website_index(index_file_path):
     new_html = load_root_index(index_file_path)
     new_html = add_meta_viewport_as_needed(new_html)
     new_html = remove_empty_tags_as_needed(new_html)
+    new_html = conv_desc_to_markdown_as_needed(new_html)
     new_html = modify_svg_scale_as_needed(new_html)
     new_html = modify_svg_width_as_needed(new_html)
     new_html = add_navigation_label_as_needed(new_html)

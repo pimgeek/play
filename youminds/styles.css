@@ -104,7 +104,7 @@ div.navigation {
 
 div.navigation > div {
   padding:0px 0px 5px 0px;
-  margin:15px 15px 0px 15px;
+  margin:0px 15px 10px 15px;
   border-bottom:1px dotted silver;  
 }
 
@@ -276,6 +276,12 @@ div.maintitle div.lastmodified {
 
 div.maintitle div.name {
   clear:both !important;
+}
+
+ul {
+  list-style-type: square;
+  padding: 10px 10px 10px 10px;
+  margin: 0px 10px 10px 10px;
 }
 
 iframe {

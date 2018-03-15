@@ -37,6 +37,23 @@ def modify_svg_width_as_needed(html):
     new_html = re.sub(regex, '%s width=\"\"' % result.group(1), html)
   return new_html
 
+def add_navigation_label_as_needed(html):
+  regex_no_change = re.compile('<div class=\'navigation\'>[ \t\r\n]*<div><div class=\'label\'')
+  regex_nav = re.compile('<div class=\'navigation\'>[ \t\r\n]*<div>')
+  regex_empty_nav = re.compile('<div class=\'navigation\'>[ \t\r\n]*<div>[ \t\r\n]*</div>')
+  regex_no_nav = re.compile('<div class=\'navigation\'>')
+  if (regex_no_nav.search(html) == None):
+    new_html = html
+  elif (regex_no_change.search(html) != None):
+    new_html = html
+  elif (regex_empty_nav.search(html) != None):
+    result = regex_empty_nav.search(html)
+    new_html = re.sub(regex_empty_nav, '', html)
+  else:
+    result = regex_nav.search(html)
+    new_html = re.sub(regex_nav, '%s\n<div class=\'label\'>深入阅读</div>\n' % result.group(0), html)
+  return new_html
+
 def apply_user_css(path):
   src_file = os.path.join(".", "styles.css")
   dest_file = os.path.join(path, "styles.css")
@@ -71,6 +88,7 @@ def rebuild_youminds_website_index(index_file_path):
     new_html = remove_empty_tags_as_needed(new_html)
     new_html = modify_svg_scale_as_needed(new_html)
     new_html = modify_svg_width_as_needed(new_html)
+    new_html = add_navigation_label_as_needed(new_html)
     rewrite_index_file(index_file_path, new_html)
     # 以上函数调用也应返回错误信息，以后再修改
     ret_val = apply_user_css(os.path.dirname(index_file_path))

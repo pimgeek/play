@@ -9,10 +9,11 @@ body > div {
   display:table;
   width:100%;
   margin:0px 0px 0px 0px;
+  padding-bottom:100px;
 }
 
 div.sitemap  {
-  margin-bottom:100px;
+  margin:0px 5px 100px 5px;
 }
 
 div.sitemap > div {
@@ -64,7 +65,7 @@ div.url div,
 div.stream div,
 div.graphic div {
   margin:0px 10px 0px 10px;
-  border-bottom:4px double #798fd7;
+  border-bottom:1px dotted #01579c;
   padding:5px 10px 15px 10px;
   font-family:monospace;
   font-size:16px;
@@ -107,6 +108,13 @@ div.navigation > div {
   border-bottom:1px dotted silver;  
 }
 
+div.navigation > div.label {
+  color:#444444;
+  font-size:16px;
+  font-weight:bold;
+  border:0 !important;
+}
+
 div.navigation div a {
   display:block;
   border:1px solid #cccccc;
@@ -126,7 +134,14 @@ div.path {
 }
 
 div.path > div {
-  padding:15px 10px 0px 10px;  
+  padding:15px 15px 0px 15px;
+}
+
+div.path > div.label {
+  color:#444444;
+  font-size:16px;
+  font-weight:bold;
+  border:0 !important;
 }
 
 div.path div a {
@@ -134,21 +149,9 @@ div.path div a {
   clear:both;
   padding:3pt;
   margin-bottom:10px;
-  
-  background:#444;
-  background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#777), to(#222));
-  background:-moz-linear-gradient(top, #777, #222);
-  background:-o-linear-gradient(top, #777, #222);
-  filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#777', endColorstr='#222');
-  background:-ms-linear-gradient(top, #777, #222);
-  background:linear-gradient(top, #777, #222);
-
-  border-right:1px solid #222;
-  border-left:1px solid #777;
+  background:#9ed3fd;
   border-radius:3px 3px 3px 3px;
   -webkit-border-radius:3px 3px 3px 3px;
-  border:none;
-  
   font-family:sans-serif;
   font-size:14px;
   text-decoration:none;
@@ -156,19 +159,19 @@ div.path div a {
 }
 
 div.path div a:NTH-CHILD(2) {
-  margin-left:30px;
+  margin-left:50px;
 }
 
 div.path div a:LAST-CHILD {  
-  background:#888;
+  background:#067ede;
   -webkit-border-radius:3px 3px 3px 3px;
   border-radius:3px 3px 3px 3px;
   margin-left:10px;
   padding-right:5pt;
 }
 
-div.path div a:NTH-LAST-CHILD(2) {  
-  background:#666;
+div.path div a:NTH-LAST-CHILD(2) {
+  background-color:#73c1ff;
   -webkit-border-radius:3px 3px 3px 3px;
   border-radius:3px 3px 3px 3px;
   margin-left:5px;
@@ -177,13 +180,14 @@ div.path div a:NTH-LAST-CHILD(2) {
 
 div.path > div > a.sitemap {
   float:left;
-  background:orange !important;
+  background:#673AB7 !important;
   -webkit-border-radius:0px;
   border-radius:4px;
+  padding:13px 20px 13px 20px;
 }
 
 div.path a.parent img {
-  height:15px;
+  vertical-align:middle;
 }
 
 div.path a.parent {
@@ -191,12 +195,33 @@ div.path a.parent {
   margin-right:15px;
   float:left;
   clear:none !important;
-  width:25px;
-  height:25px;
+  text-align:center;
+  padding:15px 20px 15px 20px;
+}
+
+div.path a.parent[title="One level up"] {
+  border:none;
+  background-color:#067ede !important;
+  margin-right:15px;
+  float:left;
+  clear:none !important;
+  text-align:center;
+  padding:15px 20px 15px 20px;
+}
+
+div.path a.parent[title="Next page"],
+div.path a.parent[title="Previous page"] {
+  border:none;
+  background-color:#01579c !important;
+  margin-right:15px;
+  float:left;
+  clear:none !important;
+  text-align:center;
+  padding:15px 20px 15px 20px;
 }
 
 div.title div.name {
-  background:#798fd7;
+  background:#01579c;
   color:white;
   font-size:20px;
   font-weight:bold;
@@ -213,7 +238,7 @@ div.title {
 
 div.title div.description {
   margin:0px 10px 0px 10px;
-  border-bottom:1px dotted #798fd7;
+  border-bottom:1px dotted #01579c;
   padding:15px 15px 15px 15px;
   display:block;
   unicode-bidi:embed;
@@ -226,14 +251,16 @@ div.title div.description {
 
 div.maintitle {
   position:fixed;
+  padding-bottom:15px;
   bottom:0px;
-  background:#798fd7;
+  background:#01579c;
   width:100%;
   font-size:16px;
   border-top:1px solid #999;
 }
 
 div.maintitle > div {
+  color:white;
   padding:5pt;
 }
 

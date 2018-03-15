@@ -60,7 +60,7 @@ def add_sitepath_label_as_needed(html):
     new_html = html
   else:
     result = regex_sitepath.search(html)
-    new_html = re.sub(regex_sitepath, '<div class=\'path\'>\n<div class=\'label\'>回溯阅读</div>\n<div>', html)
+    new_html = re.sub(regex_sitepath, '<div class=\'path\'>\n<div class=\'label\'>回溯阅读 / 关联阅读</div>\n<div>', html)
   return new_html
 
 def apply_user_css(path):

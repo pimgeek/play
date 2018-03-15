@@ -277,3 +277,8 @@ div.maintitle div.lastmodified {
 div.maintitle div.name {
   clear:both !important;
 }
+
+iframe {
+  width:90%;
+  height:initial;
+}

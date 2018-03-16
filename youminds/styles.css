@@ -103,8 +103,8 @@ div.navigation {
 }
 
 div.navigation > div {
-  padding:0px 0px 5px 0px;
-  margin:0px 15px 10px 15px;
+  padding:10px 0px 5px 0px;
+  margin:10px 15px 10px 15px;
   border-bottom:1px dotted silver;  
 }
 
@@ -180,10 +180,11 @@ div.path div a:NTH-LAST-CHILD(2) {
 
 div.path > div > a.sitemap {
   float:left;
-  background:#673AB7 !important;
+  background:#eac886 !important;
   -webkit-border-radius:0px;
   border-radius:4px;
   padding:13px 20px 13px 20px;
+  margin-bottom:15px;
 }
 
 div.path a.parent img {

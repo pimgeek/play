@@ -281,7 +281,9 @@ ul {
   margin: 0px 10px 10px 10px;
 }
 
-iframe {
+img,
+iframe,
+video {
   width:90%;
   height:initial;
 }

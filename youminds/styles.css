@@ -158,10 +158,6 @@ div.path div a {
   color:white;
 }
 
-div.path div a:NTH-CHILD(2) {
-  margin-left:50px;
-}
-
 div.path div a:LAST-CHILD {  
   background:#067ede;
   -webkit-border-radius:3px 3px 3px 3px;
@@ -203,7 +199,7 @@ div.path a.parent {
 div.path a.parent[title="One level up"] {
   border:none;
   background-color:#067ede !important;
-  margin-right:15px;
+  margin:0px 15px 10px 25px;
   float:left;
   clear:none !important;
   text-align:center;

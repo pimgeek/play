@@ -26,7 +26,7 @@ def conv_desc_to_markdown_as_needed(html):
     regex_inner_html = re.compile("<div class=\"description\">(.+(?=<\/div>))<\/div>", re.DOTALL)
     result = regex_inner_html.search(desc_tag.prettify())
     if (result != None):
-      new_desc_tag = new_html_soup_tag("<div id=\"desc_md_to_html\" class=\"description\">%s</div>" % htm.unescape(markdown.markdown(result.group(1))))
+      new_desc_tag = new_html_soup_tag("<div id=\"desc_md_to_html\" class=\"description\">%s</div>" % htm.unescape(markdown.markdown(result.group(1).replace("<br/>",""))))
       desc_tag.replace_with(new_desc_tag)
       new_html = html_soup.prettify()
     else:
@@ -45,7 +45,7 @@ def conv_text_to_markdown_as_needed(html):
     regex_inner_html = re.compile("<div class=\"textcontent\">[ \t\r\n]*<div>(.+(?=<\/div>))[ \t\r\n]*<\/div>[ \t\r\n]*<\/div>", re.DOTALL)
     result = regex_inner_html.search(text_tag.prettify())
     if (result != None):
-      new_text_tag = new_html_soup_tag("<div id=\"text_md_to_html\" class=\"textcontent\"><div>%s</div></div>" % htm.unescape(markdown.markdown(result.group(1))))
+      new_text_tag = new_html_soup_tag("<div id=\"text_md_to_html\" class=\"textcontent\"><div>%s</div></div>" % htm.unescape(markdown.markdown(result.group(1).replace("<br/>",""))))
       text_tag.replace_with(new_text_tag)
       new_html = html_soup.prettify()
     else:
@@ -153,13 +153,13 @@ def rebuild_youminds_website_index(index_file_path):
     new_html = load_root_index(index_file_path)
     new_html = add_meta_viewport_as_needed(new_html)
     new_html = change_sitemap_label_as_needed(new_html)
-    new_html = remove_empty_tags_as_needed(new_html)
+    #new_html = add_navigation_label_as_needed(new_html)
+    new_html = add_sitepath_label_as_needed(new_html)
     new_html = conv_desc_to_markdown_as_needed(new_html)
     new_html = conv_text_to_markdown_as_needed(new_html)
+    new_html = remove_empty_tags_as_needed(new_html)
     new_html = modify_svg_scale_as_needed(new_html)
     new_html = modify_svg_width_as_needed(new_html)
-    new_html = add_navigation_label_as_needed(new_html)
-    new_html = add_sitepath_label_as_needed(new_html)
     rewrite_index_file(index_file_path, new_html)
     # 以上函数调用也应返回错误信息，以后再修改
     ret_val = apply_user_css(os.path.dirname(index_file_path))
@@ -178,5 +178,5 @@ def rebuild_youminds_website_index(index_file_path):
   return ret_val
 
 if __name__ == '__main__':
-  ret_val = rebuild_youminds_website_index("D:/pim-wudi/tmp/www/youminds_export/pub.html")
+  ret_val = rebuild_youminds_website_index("D:/pim-wudi/tmp/www/youminds_export/pimgeek-pub.html")
   print(ret_val)

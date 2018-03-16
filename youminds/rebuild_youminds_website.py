@@ -19,14 +19,14 @@ def new_html_soup_tag(html_div_code):
 def conv_desc_to_markdown_as_needed(html):
   html_soup = bs4.BeautifulSoup(html, "html5lib")
   desc_tag = html_soup.find("div", "description")
-  md_to_html_tag = html_soup.find("div", "md_to_html", "description")
+  md_to_html_tag = html_soup.find("div", id="desc_md_to_html")
   if (md_to_html_tag != None):
     new_html = html
   elif (desc_tag != None):
     regex_inner_html = re.compile("<div class=\"description\">(.+(?=<\/div>))<\/div>", re.DOTALL)
     result = regex_inner_html.search(desc_tag.prettify())
     if (result != None):
-      new_desc_tag = new_html_soup_tag("<div id=\"md_to_html\" class=\"description\">%s</div>" % htm.unescape(markdown.markdown(result.group(1))))
+      new_desc_tag = new_html_soup_tag("<div id=\"desc_md_to_html\" class=\"description\">%s</div>" % htm.unescape(markdown.markdown(result.group(1))))
       desc_tag.replace_with(new_desc_tag)
       new_html = html_soup.prettify()
     else:
@@ -35,6 +35,25 @@ def conv_desc_to_markdown_as_needed(html):
     new_html = html
   return new_html
 
+def conv_text_to_markdown_as_needed(html):
+  html_soup = bs4.BeautifulSoup(html, "html5lib")
+  text_tag = html_soup.find("div", "textcontent")
+  md_to_html_tag = html_soup.find("div", id="textcontent")
+  if (md_to_html_tag != None):
+    new_html = html
+  elif (text_tag != None):
+    regex_inner_html = re.compile("<div class=\"textcontent\">[ \t\r\n]*<div>(.+(?=<\/div>))[ \t\r\n]*<\/div>[ \t\r\n]*<\/div>", re.DOTALL)
+    result = regex_inner_html.search(text_tag.prettify())
+    if (result != None):
+      new_text_tag = new_html_soup_tag("<div id=\"text_md_to_html\" class=\"textcontent\"><div>%s</div></div>" % htm.unescape(markdown.markdown(result.group(1))))
+      text_tag.replace_with(new_text_tag)
+      new_html = html_soup.prettify()
+    else:
+      new_html = html
+  else:
+    new_html = html
+  return new_html
+  
 def add_meta_viewport_as_needed(html):
   regex = re.compile('<meta name=\"viewport\"')
   if (regex.search(html)):
@@ -43,8 +62,16 @@ def add_meta_viewport_as_needed(html):
     new_html = html.replace('</head>','<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no\">\n</head>')
   return new_html
   
+def change_sitemap_label_as_needed(html):
+  regex = re.compile('<a class=\'sitemap\'([^>]*)>[ \t\r\n]*Sitemap[ \t\r\n]*<\/a>', re.DOTALL)
+  if (regex.search(html) == None):
+    new_html = html
+  else:
+    new_html = re.sub(regex, '<a class=\'sitemap\'\g<1>>全站内容索引</a>', html)
+  return new_html
+
 def remove_empty_tags_as_needed(html):
-  regex = re.compile('<ul>[ \r\n]*</ul>')
+  regex = re.compile('<ul>[ \t\r\n]*</ul>')
   if (regex.search(html) == None):
     new_html = html
   else:
@@ -125,8 +152,10 @@ def rebuild_youminds_website_index(index_file_path):
   else:
     new_html = load_root_index(index_file_path)
     new_html = add_meta_viewport_as_needed(new_html)
+    new_html = change_sitemap_label_as_needed(new_html)
     new_html = remove_empty_tags_as_needed(new_html)
     new_html = conv_desc_to_markdown_as_needed(new_html)
+    new_html = conv_text_to_markdown_as_needed(new_html)
     new_html = modify_svg_scale_as_needed(new_html)
     new_html = modify_svg_width_as_needed(new_html)
     new_html = add_navigation_label_as_needed(new_html)

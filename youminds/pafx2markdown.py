@@ -1,6 +1,7 @@
 #!/usr/local/bin/python
 
 import sys
+import os
 import xml.etree.ElementTree as xmlET
 
 # 获取当前卡片盒的所有属性
@@ -98,15 +99,26 @@ def markdown_indent(md_str):
         pass
     return md_str
 
+def write_markdown(md_str, outfilepath):
+    if md_str != None:
+        fh = open(outfilepath, "w+", encoding="utf-8")
+        fh.write(md_str)
+        fh.close()
+    return
+        
 # begin main script
 
 files = sys.argv[1:]
 
 for file in files:
+    file_dir = os.path.dirname(file)
+    file_name = os.path.basename(file).rsplit('.', 1)[0]
     pafx_obj = xmlET.parse(file).getroot()
     root_cardbox = pafx_obj[0][0]
     # print('\n╔══════════ %s' % file)
     # for cardbox in get_sub_cardbox_list(root_cardbox):
     #     print(export_cardbox_in_ascii(cardbox))
     # print('\n╚══════════════════════════════')
-    print(str.join('\n', pafx2md_by_level(root_cardbox, 3)))
+    md_str = str.join('\n', pafx2md_by_level(root_cardbox, 3))
+    print(md_str)
+    write_markdown(md_str, os.path.join(file_dir, file_name + os.extsep + 'md'))

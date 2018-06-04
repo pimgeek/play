@@ -2,7 +2,12 @@
 
 import sys
 import os
+import base64
+import pypandoc
+import shortuuid
 import xml.etree.ElementTree as xmlET
+
+os.environ.setdefault('PYPANDOC_PANDOC', 'C:/Users/pimgeek/AppData/Local/Pandoc/pandoc.exe')
 
 # 获取当前卡片盒的所有属性
 def get_cardbox_all_attrs(cardbox):
@@ -22,7 +27,7 @@ def get_cardbox_all_attrs(cardbox):
 
 # 获取当前卡片盒的备注信息（若有嵌入图片，也要导出）
 def get_cardbox_content(cardbox):
-    content_dict = { 'text': '' }
+    content_dict = { 'text': '', 'stream':'' }
     content = cardbox.find('content')
     if content != None:
         if content.get('contentrepresentation') == 'text' and \
@@ -34,6 +39,7 @@ def get_cardbox_content(cardbox):
             content_dict['text'] = content.text
         elif content.get('contentrepresentation') == 'stream':
             content_dict['stream'] = content.text
+            content_dict['imgtype'] = content.get('mimetype').rsplit('/',1)[-1]
     return content_dict
 
 # 获取当前卡片盒的子卡片盒列表
@@ -58,10 +64,12 @@ def pafx2md_by_level(cardbox, level):
         cardbox_attr_dict = get_cardbox_all_attrs(cardbox)
         cardbox_content_dict = get_cardbox_content(cardbox)
         md_list.append("# " + cardbox_attr_dict['name'])
-        if cardbox_attr_dict['description'] != '' and \
-            cardbox_content_dict['text'] != '':
-            md_list.append(cardbox_attr_dict['description'] + "\n\n" + cardbox_content_dict['text'] + "\n\n----\n")
-        
+        if cardbox_attr_dict['description'] != '':
+            md_list.append(cardbox_attr_dict['description'] + "\n\n")
+        if cardbox_content_dict['text'] != '':
+            md_list.append(cardbox_content_dict['text'] + "\n\n")
+        if cardbox_content_dict['stream'] != '':
+            md_list.append("![img]|%s.%s|%s" % (shortuuid.uuid(), cardbox_content_dict['imgtype'], cardbox_content_dict['stream']))
         sub_cardbox_list = get_sub_cardbox_list(cardbox)
         if (level == 0 or len(sub_cardbox_list) == 0):
             pass
@@ -99,26 +107,50 @@ def markdown_indent(md_str):
         pass
     return md_str
 
-def write_markdown(md_str, outfilepath):
-    if md_str != None:
-        fh = open(outfilepath, "w+", encoding="utf-8")
-        fh.write(md_str)
-        fh.close()
+def write_markdown(md_list, outdir, outfilename):
+    if os.path.isdir(outdir):
+        deltree(outdir)
+    else:
+        os.mkdir(outdir)
+    md_fh = open(os.path.join(outdir, outfilename), "w+", encoding="utf-8")
+    for md_str in md_list:
+        if md_str.startswith('![img]'):
+            img_data = md_str.split('|')
+            md_fh.write("%s(%s)\n\n" % (img_data[0], img_data[1]))
+            img_fh = open(os.path.join(outdir, img_data[1]), "wb+")
+            img_fh.write(base64.b64decode(img_data[2]))
+            img_fh.close()
+        else:
+            md_fh.write(md_str + "\n")
+    md_fh.close()
     return
         
+def deltree(dir):
+    if os.path.isdir(dir):
+        files = os.listdir(dir)
+        for file in files:
+            os.remove(os.path.join(dir, file))
+    else:
+        pass
+
 # begin main script
 
 files = sys.argv[1:]
 
 for file in files:
-    file_dir = os.path.dirname(file)
     file_name = os.path.basename(file).rsplit('.', 1)[0]
+    file_dir = os.path.join(os.path.dirname(file), file_name)
+    md_filename = file_name + os.extsep + 'md'
+    docx_filename = file_name + os.extsep + 'docx'
     pafx_obj = xmlET.parse(file).getroot()
     root_cardbox = pafx_obj[0][0]
     # print('\n╔══════════ %s' % file)
     # for cardbox in get_sub_cardbox_list(root_cardbox):
     #     print(export_cardbox_in_ascii(cardbox))
     # print('\n╚══════════════════════════════')
-    md_str = str.join('\n', pafx2md_by_level(root_cardbox, 3))
-    print(md_str)
-    write_markdown(md_str, os.path.join(file_dir, file_name + os.extsep + 'md'))
+    md_list = pafx2md_by_level(root_cardbox, 5)
+    write_markdown(md_list, file_dir, md_filename)
+    os.chdir(file_dir)
+    output = pypandoc.convert(md_filename, format="md", to='docx', \
+        outputfile=docx_filename)
+    print(output)

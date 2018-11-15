@@ -1,0 +1,19 @@
+<!--@+leo-ver=5-thin-->
+<!--@+node:pimgeek.20181113174737.1: * @file web/index.html-->
+<!--@@language html-->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>eel 前后端联动测试</title>
+		<!-- Include eel.js - note this file doesn't exist in the 'web' directory -->
+		<script type="text/javascript" src="/eel.js"></script>
+		<script type="text/javascript" src="/index.js"></script>
+	</head>
+	<body>
+		<p>请按下 F12 打开 Web 控制台……</p>
+		<input id="key" placeholder="请在这里输入……"></input>
+		<button onclick="eel.js_to_py(document.getElementById('key').value,'N')">go!</button>
+	</body>
+</html>
+<!--@-leo-->
